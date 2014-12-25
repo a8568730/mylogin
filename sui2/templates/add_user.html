@@ -1,0 +1,10 @@
+
+
+<form action="{% url '新增一個使用者' %}" method="post">
+{% csrf_token %}
+<label for="username">username:</label>
+<input id="username"/>
+
+<label for="password">password:</label>
+<input id="password"/>
+</form>
