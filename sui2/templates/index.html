@@ -1,0 +1,20 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8"/>
+	{% load staticfiles %}
+	<script src="http://cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.8/angular.min.js"></script>
+	<script src="{% static 'js/module.js' %}"></script>
+	<script src="{% static 'js/config.js' %}"></script>
+	
+</head>
+<body ng-app="app1">
+	<nav><button>登入</button> <button>登出</button></nav>
+	<div ng-if="1">
+		Welcome, user XXX
+	</div>
+	<div ng-if="0">
+		Please log in.("sidk", "sui2sui2")
+	</div>
+</body>
+</html>
