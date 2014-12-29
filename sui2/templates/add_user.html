@@ -3,9 +3,15 @@
 <form action="{% url '新增一個使用者' %}" method="post">
 {% csrf_token %}
 <label for="username">username:</label>
-<input id="username"/>
-
+{{ 新使用者.username }}
+{% if 新使用者.username.errors %}
+<p>{{ 新使用者.username.errors }}</p>{% endif %}
+					
+<br/>					
 <label for="password">password:</label>
-<input id="password"/>
+{{ 新使用者.password }}
+{% if 新使用者.password.errors %}
+<p>{{ 新使用者.password.errors }}</p>{% endif %}
+
 <button type="submit">送出</button>
 </form>
