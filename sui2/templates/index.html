@@ -9,7 +9,16 @@
 	
 </head>
 <body ng-app="app1">
-	<nav><button>登入</button> <button>登出</button></nav>
+	<nav><button>登入</button>
+		<form action="" method="get" ng-submit="login()">
+			<label for="un">username</label>
+			<input type="" id="un"/>
+			<label for="pw">password</label>
+			<input type="" id="pw"/>
+			<button ng-submit="login()">確認</button>
+		</form>
+		<button>登出</button>
+	</nav>
 	<div ng-if="1">
 		Welcome, user XXX
 	</div>
