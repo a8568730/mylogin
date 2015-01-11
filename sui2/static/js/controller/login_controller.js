@@ -3,6 +3,7 @@ angular.module('app1')
 	$scope.verified = false;
 	
 	$scope.login = function(){		
+		console.log($scope.un);
 		//Goal - method POST
 		$http({
 			method: 'GET',
@@ -12,6 +13,8 @@ angular.module('app1')
 				console.log(data);
 				$scope.verified = data['verified'];
 				console.log($scope.verified);
+				$scope.namen = data['username'];
+				$scope.passw = data['password'];
 		});
 	};
 	

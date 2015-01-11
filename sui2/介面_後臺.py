@@ -25,12 +25,9 @@ def 顯示所有使用者(request):
 	return HttpResponse(json.dumps(全部使用者, ensure_ascii=False), content_type="application/json; charset=utf-8")   
 
 def 驗證使用者(request, usern, passw):
-		#print('登入='  + usern + ' ' + passw)
-		對應到資料庫 = 使用者表格.objects.filter(username = usern)#.first()
-		#print('yes' + 對應到資料庫.password)
+		對應到資料庫 = 使用者表格.objects.filter(username = usern)
 		if 對應到資料庫.exists():
-			輸出 = {'verified': True}#, 'username': 對應到資料庫.username, 'password': 對應到資料庫.password}
+			輸出 = {'verified': True, 'username': 對應到資料庫.first().username, 'password': 對應到資料庫.first().password}
 		else:
-			print('no')
 			輸出 = {'verified': False}
 		return HttpResponse(json.dumps(輸出, ensure_ascii=False), content_type="application/json; charset=utf-8")   
