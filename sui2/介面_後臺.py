@@ -4,7 +4,7 @@ from django.http.response import HttpResponse
 from sui2.models import 使用者表格
 import json
 
-
+# 話說要在哪個階段避免帳密重複？
 
 def 新增一個使用者(request):
 	if request.method == 'POST':
@@ -24,4 +24,13 @@ def 顯示所有使用者(request):
 		全部使用者.append([使用者.username, 使用者.password])
 	return HttpResponse(json.dumps(全部使用者, ensure_ascii=False), content_type="application/json; charset=utf-8")   
 
-	
+def 驗證使用者(request, usern, passw):
+		#print('登入='  + usern + ' ' + passw)
+		對應到資料庫 = 使用者表格.objects.filter(username = usern)#.first()
+		#print('yes' + 對應到資料庫.password)
+		if 對應到資料庫.exists():
+			輸出 = {'verified': True}#, 'username': 對應到資料庫.username, 'password': 對應到資料庫.password}
+		else:
+			print('no')
+			輸出 = {'verified': False}
+		return HttpResponse(json.dumps(輸出, ensure_ascii=False), content_type="application/json; charset=utf-8")   
