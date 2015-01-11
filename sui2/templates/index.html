@@ -7,6 +7,7 @@
 	<script src="{% static 'js/module.js' %}"></script>
 	<script src="{% static 'js/config.js' %}"></script>
 	<script src="{% static 'js/controller/login_controller.js' %}"></script>
+	<script src="{% static 'js/service/login_service.js' %}"></script>
 	
 </head>
 <body ng-app="app1">
@@ -24,10 +25,10 @@
 				<!-- <button>登出</button> -->
 			</nav>
 			
-			<div ng-if="verified">
-				Welcome, user {$ namen $}
+			<div ng-if="arr['verified']">
+				Welcome, user {$ arr['username'] $} (password: {$ arr['password'] $})
 			</div>
-			<div ng-if="!verified">
+			<div ng-if="!arr['verified']">
 				Please log in.("sidk", "sui2sui2")
 			</div>
 	</div>

@@ -1,21 +1,14 @@
 angular.module('app1')
-.controller('loginController', ['$scope', '$http', function($scope, $http){
-	$scope.verified = false;
+.controller('loginController', ['$scope', 'loginservice', function($scope, loginservice){
 	
-	$scope.login = function(){		
-		console.log($scope.un);
-		//Goal - method POST
-		$http({
-			method: 'GET',
-			url: '/' + $scope.un + '/' + $scope.pw + '/驗證使用者'
-		})
-		.success(function(data, status) {
-				console.log(data);
-				$scope.verified = data['verified'];
-				console.log($scope.verified);
-				$scope.namen = data['username'];
-				$scope.passw = data['password'];
-		});
+	$scope.arr = {};
+	$scope.arr['verified'] = false;
+	
+	$scope.login = function(){ 
+		loginservice.verify($scope.un, $scope.pw)
+										.success(function(data){
+												$scope.arr = data;
+										}); 
 	};
 	
 }]);
